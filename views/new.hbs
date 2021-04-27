@@ -1,0 +1,51 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Create an Account</title>
+		<meta name="description" content="form to add parcels">
+		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+        
+	</head>
+	<body>
+		<header>
+		<h1>Send a parcel</h1>
+		<a href="/logout">Log out</a>
+		</header>
+		<main>
+            {{#if authorised}}
+            <p>Logged in as <strong>{{authorised}}</strong> </p>
+            {{/if}}
+               
+             <form name="parcel" action="/new" method="post" enctype="multipart/form-data">
+<p>
+<label for="S_postcode">Sender post code</label> <br/>
+<input type="text" name="S_postcode" placeholder="Your post code" value="" required>
+</p>
+            
+<p>   
+<label for="D_postcode">Destination  post code</label> <br/>
+<input type="text" name="D_postcode" placeholder="Destination post code" value="" required>
+</p>
+            
+                
+<label for="amount">Parcel weight in KG</label>
+<input type="range" name="amount" value="10" min="0" max="20" step="0.1" />
+<output name="amount_val">10</output>
+                
+                 
+ <p>
+ <label for="Name">Recepient full name</label> <br/>
+ <input type="text" name="Name" placeholder="Recepient name and surname" value="" required>
+ </p>
+                
+<br>
+<label for="Address">Your address</label><br/>
+<textarea rows = "5" cols = "60" name = "Address" required >
+Enter details here...
+</textarea>
+             <p><input type="submit" value="Send parcel"></p>
+            </form> 
+		</main>
+	</body>
+</html>
