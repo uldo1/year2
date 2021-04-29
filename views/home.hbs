@@ -18,8 +18,13 @@
 			
 		</header>
 	<main>
+        
 		<p>This is the home page. Users cant see it without logging in.</p>
-		
+		        <table>
+            {{#each Parcels}}
+                <tr><td>{{this.Rec_name}}</td><td>{{this.D_postcode}}</td><td>{{this.date_added}}</td><td>{{this.Status:}}</td></tr>
+            {{/each}}  
+        </table>
 	</main>
 	</body>
 </html>

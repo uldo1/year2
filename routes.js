@@ -6,7 +6,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { upload } from 'https://cdn.deno.land/oak_upload_middleware/versions/v2/raw/mod.ts'
 // import { parse } from 'https://deno.land/std/flags/mod.ts'
 
-import { login, register } from './modules/accounts.js'
+import { login, register,parcelcollector } from './modules/accounts.js'
 import { addparcel } from './modules/parcels.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
@@ -23,9 +23,16 @@ router.get('/', async context => {
 router.get('/home', async context => {
 	const authorised = context.cookies.get('authorised')
 	if(authorised === undefined) context.response.redirect('/login')
-	const data = { authorised }
-	const body = await handle.renderView('home', data)
-	context.response.body = body
+	let data = { authorised }
+    try{
+        const parceldata = await parcelcollector(data)
+        const body = await handle.renderView('home', parceldata)
+        context.response.body = body      
+    } catch(err){
+        console.log(err)
+		context.response.redirect('/login')   
+    }
+	
 })
 
 router.get('/login', async context => {

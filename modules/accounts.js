@@ -27,3 +27,14 @@ export async function register(data) {
 	const records = await db.query(sql)
 	return true
 }
+
+export async function parcelcollector(Uname){
+    let sql = `SELECT Rec_name, D_postcode, date_added, Status FROM Parcels WHERE sender_username = "${Uname.authorised}";` 
+    let result = await db.query(sql)
+    const data = {
+        Parcels:result
+    }
+    console.log(data)
+    return data
+    
+}
