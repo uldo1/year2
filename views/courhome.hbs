@@ -9,18 +9,19 @@
 		<meta name="author" content="Mark Tyers">
 		<link href="/style.css" type="text/css" rel="stylesheet" />
 		<script type="module" src="/main.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<header>
 			<h1>Home for the courier</h1>            
 			<a href="/logout">Log out</a>
-            
 			<form name="parcelsearch" action="/courhome" method="post" enctype="multipart/form-data">
 <p>
-<label for="parcel_id">Search for the parcel you want to deliver</label> 
+    <br>
+<label for="parcel_id" style="color:lightblue">Search for the parcel you want to deliver</label> 
 <input type="text" name="parcel_id" placeholder="Parcel id" value="" required>
-</p>
-<a><input type="submit" value="Search"></a>                
+<a><input type="submit" value="Search"></a> 
+                </p>
             </form>
 		</header>
 	<main>

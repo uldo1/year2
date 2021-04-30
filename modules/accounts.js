@@ -36,8 +36,8 @@ export async function register(data) {
 }
 
 export async function parcelcollector(Uname){
-    let sql = `SELECT Rec_name, D_postcode, date_added, Status FROM Parcels WHERE sender_username = "${Uname.authorised}";` 
-    let result = await db.query(sql)
+    const sql = `SELECT Rec_name, D_postcode, date_added, Status FROM Parcels WHERE sender_username = "${Uname.authorised}";` 
+    const result = await db.query(sql)
     const data = {
         Parcels:result
     }
@@ -58,21 +58,21 @@ export async function couriersearcher(things){
     
 }
 export async function couriercollector(Uname){
-    let sql = `SELECT Rec_name, D_postcode, weight, date_added FROM Parcels WHERE delivery_username = "${Uname.authorised}";` 
-    let result = await db.query(sql)
+    const sql = `SELECT Rec_name, D_postcode, weight, date_added FROM Parcels WHERE delivery_username = "${Uname.authorised}";` 
+    const result = await db.query(sql)
     const data = {
         Parcels:result
     }
     console.log(data)
     data.Parcels.forEach((element, index, array) => {
     console.log(element.date_added);
-    let start = new Date(element.date_added).getTime();
-    let now = new Date().toISOString()
-    let end = new Date(now).getTime();    
-    let milliseconds = Math.abs(end - start).toString();
-    let seconds = parseInt(milliseconds / 1000);
-    let minutes = parseInt(seconds / 60);
-    let hours = parseInt(minutes / 60);
+    const start = new Date(element.date_added).getTime();
+    const now = new Date().toISOString()
+    const end = new Date(now).getTime();    
+    const milliseconds = Math.abs(end - start).toString();
+    const seconds = parseInt(milliseconds / 1000);
+    const minutes = parseInt(seconds / 60);
+    const hours = parseInt(minutes / 60);
     
     data.Parcels[index].hours = hours
 });

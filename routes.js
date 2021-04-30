@@ -28,7 +28,7 @@ router.get('/home', async context => {
     console.log(couriercookie)
 	if(authorised === undefined) context.response.redirect('/login')
     if(couriercookie === 'yes') context.response.redirect('/courhome')
-	let data = { authorised }
+	const data = { authorised }
     try{
         const parceldata = await parcelcollector(data)
         const body = await handle.renderView('home', parceldata)
@@ -105,7 +105,7 @@ router.get('/courhome', async context => {
     const couriercookie = context.cookies.get('iscour')
 	if(authorised === undefined) context.response.redirect('/login')
     if(couriercookie === 'no') context.response.redirect('/home')
-	let data = { authorised }
+	const data = { authorised }
     
     const parceldata = await couriercollector(data) 
     const body = await handle.renderView('courhome', parceldata)
