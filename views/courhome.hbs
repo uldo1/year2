@@ -1,0 +1,41 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Home for the courier</h1>            
+			<a href="/logout">Log out</a>
+            
+			<form name="parcelsearch" action="/courhome" method="post" enctype="multipart/form-data">
+<p>
+<label for="parcel_id">Search for the parcel you want to deliver</label> 
+<input type="text" name="parcel_id" placeholder="Parcel id" value="" required>
+</p>
+<a><input type="submit" value="Search"></a>                
+            </form>
+		</header>
+	<main>
+        <table>
+                    <tr>
+        <th>Recepient name</th>
+        <th>Destiantion postcode</th>
+        <th>Parcel weight</th>
+        <th>Hours elapsed</th>
+          </tr>
+            {{#each Parcels}} 
+                <tr><td>{{this.Rec_name}}</td><td>{{this.D_postcode}}</td><td>{{this.weight}}</td> <td>{{this.hours}}</td></tr>  
+            {{/each}}  
+        </table>
+      	       
+	</main>
+	</body>
+</html>

@@ -19,10 +19,17 @@
 		</header>
 	<main>
         
-		<p>This is the home page. Users cant see it without logging in.</p>
+		
 		        <table>
+                    <tr>
+        <th>Recepient name</th>
+        <th>Destiantion postcode</th>
+        <th>Date and time added</th>
+        <th>Status</th>
+          </tr>
             {{#each Parcels}}
-                <tr><td>{{this.Rec_name}}</td><td>{{this.D_postcode}}</td><td>{{this.date_added}}</td><td>{{this.Status:}}</td></tr>
+                 
+                <tr><td>{{this.Rec_name}}</td><td>{{this.D_postcode}}</td><td>{{this.date_added}}</td><td>{{this.Status}}</td></tr>
             {{/each}}  
         </table>
 	</main>
